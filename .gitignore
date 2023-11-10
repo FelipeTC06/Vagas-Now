@@ -1,0 +1,10 @@
+# Ignorar arquivos temporários
+*.tmp
+
+# Ignorar arquivos de log
+*.log
+
+# Ignorar diretórios específicos
+node_modules/
+build/
+.env
