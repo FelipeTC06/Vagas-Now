@@ -11,7 +11,6 @@ bot.on('message', (msg) => {
 });
 
 function sendMessageToChat(chatId, message) {
-    console.log(message);
     bot.sendMessage(chatId, message);
 }
 

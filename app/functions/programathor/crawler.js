@@ -44,10 +44,8 @@ function compareArrays(dbJobs, scrapedJobs) {
     const newJobs = scrapedJobs.filter(job => !dbLinks.includes(job.link));
 
     if (newJobs.length > 0) {
-        console.log('Novos trabalhos encontrados:');
         return newJobs;
     } else {
-        console.log('Nenhum novo trabalho encontrado.');
         return [];
     }
 }
@@ -88,7 +86,6 @@ async function insertNewJobs(newJobs) {
 
         await queryAsync('COMMIT');
 
-        console.log('Transação completa.');
     } catch (error) {
         await queryAsync('ROLLBACK');
         throw error;
