@@ -113,13 +113,14 @@ async function updateJobs() {
     } else {
         await insertNewJobs(resultArray);
         console.log('Trabalhos atualizados:', newJobs);
+        return newJobs;
     }
 }
 
 async function main(req, res) {
     try {
-        await updateJobs();
-        res.status(200).send('Trabalhos atualizados com sucesso.');
+        const newJobs = await updateJobs();
+        res.status(200).send('Trabalhos atualizados com sucesso.', newJobs);
     } catch (error) {
         console.error('Erro:', error);
         res.status(500).send('Erro ao atualizar trabalhos.');
