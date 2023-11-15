@@ -1,6 +1,7 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const connection = require('../../database/database');
+const sendNewJobs = require('./sendNewJobs');
 
 async function fetchData(url) {
     try {
@@ -107,7 +108,9 @@ async function main(req, res) {
     const dbJobs = await getJobsFromDatabase();
 
     const newJobs = compareArrays(dbJobs, resultArray);
-
+    
+    await sendNewJobs(newJobs);
+    
     if (newJobs.length === 0) {
         res.status(200).send('Nenhum novo trabalho encontrado.');
     } else {

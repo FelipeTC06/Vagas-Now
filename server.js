@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const router = require('./app/routes/routes');
+const bot = require('./app/functions/telegram/bot-integration');
 const port = 3000;
 
 const app = express();
