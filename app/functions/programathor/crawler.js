@@ -93,7 +93,7 @@ async function insertNewJobs(newJobs) {
 }
 
 
-async function main(req, res) {
+async function updateJobs() {
     const url = 'https://programathor.com.br/jobs';
 
     const html = await fetchData(url);
@@ -109,11 +109,26 @@ async function main(req, res) {
     await sendNewJobs(newJobs);
     
     if (newJobs.length === 0) {
-        res.status(200).send('Nenhum novo trabalho encontrado.');
+        console.log('Nenhum novo trabalho encontrado.');
     } else {
         await insertNewJobs(resultArray);
-        res.status(200).json(newJobs);
+        console.log('Trabalhos atualizados:', newJobs);
     }
 }
+
+async function main(req, res) {
+    try {
+        await updateJobs();
+        res.status(200).send('Trabalhos atualizados com sucesso.');
+    } catch (error) {
+        console.error('Erro:', error);
+        res.status(500).send('Erro ao atualizar trabalhos.');
+    }
+}
+
+setInterval(() => {
+    updateJobs().catch(error => console.error('Erro ao atualizar trabalhos:', error));
+}, 3600000);
+
 
 module.exports = main;
