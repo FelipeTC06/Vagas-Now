@@ -2,7 +2,7 @@
   "name": "vagasnow",
   "version": "1.0.0",
   "description": "webScraping web sits to find jobs",
-  "main": "serve.js",
+  "main": "server.js",
   "scripts": {
     "start": "nodemon"
   },
