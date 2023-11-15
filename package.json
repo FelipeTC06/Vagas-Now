@@ -1,10 +1,11 @@
 {
   "name": "vagasnow",
   "version": "1.0.0",
-  "description": "webScraping web sits to find jobs",
+  "description": "webScraping web sites to find jobs",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon"
+    "start": "nodemon",
+    "build": "npm install && npm run start"
   },
   "author": "Felipe Torres Cresto",
   "license": "ISC",
