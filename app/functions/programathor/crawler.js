@@ -120,7 +120,7 @@ async function updateJobs() {
 async function main(req, res) {
     try {
         const newJobs = await updateJobs();
-        res.status(200).send('Trabalhos atualizados com sucesso.', newJobs);
+        res.status(200).send(newJobs);
     } catch (error) {
         console.error('Erro:', error);
         res.status(500).send('Erro ao atualizar trabalhos.');
